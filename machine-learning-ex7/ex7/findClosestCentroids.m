@@ -21,9 +21,34 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+fprintf('Size of X \n');
+size(X)
+%	X
+
+fprintf('Size of centroids \n');
+size(centroids)
+
+fprintf('Size of idx \n');
+size(idx)
+
+m = size(idx, 1);
+k = size(centroids,1);
+
+%% distance between 2 points = sqrt( (x2-x1)^2 + (y2-y1)^2)
+%% not doing sqrt below as it should give the same result
+
+for i = 1:m
+	distance = zeros(k, 1);
+  	for j = 1:k
+
+  		distance(j) = sum( ( X(i, :) - centroids(j, :) ).^2);
 
 
+  	endfor
 
+  	[value, idx(i)] = min(distance);
+
+endfor
 
 
 

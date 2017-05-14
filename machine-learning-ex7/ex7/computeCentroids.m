@@ -26,6 +26,31 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
+%300x1
+%size(idx)
+
+for k = 1:K
+	count_k = 0;
+% 1 row and n columns, bcoz it needs to house the sum of multiple 
+%rows of X in a single row
+	sum_X = zeros(1, n); 
+	for i = 1:m
+
+		if(idx(i) == k)
+
+			count_k++;
+
+			sum_X = X(i, 1:n) + sum_X;
+
+		end
+
+	endfor
+
+sum_X
+count_k
+	centroids(k, 1:n) = (1/count_k).*sum_X;
+
+endfor
 
 
 
